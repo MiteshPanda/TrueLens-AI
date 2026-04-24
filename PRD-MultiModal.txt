@@ -1,0 +1,207 @@
+📘 PRODUCT REQUIREMENT DOCUMENT (BUILD-ORIENTED)
+🧠 Project Title
+
+AI-Powered Fake News & Deepfake Detection System
+
+1️⃣ Product Vision
+
+Build a web-based AI system that:
+
+Detects fake news (text input)
+Detects deepfake videos (video upload)
+Provides confidence + explanation
+Works in real-time (<3 sec response)
+2️⃣ MVP Definition (IMPORTANT)
+
+👉 You should NOT build everything at once.
+
+✅ MVP (what you actually build first)
+Fake News Detection (BERT)
+Deepfake Detection (pretrained model)
+FastAPI backend
+Simple React UI
+File/text input + result display
+❌ NOT MVP (do later if time allows)
+Live video detection
+Browser extension
+Blockchain
+Multi-language
+3️⃣ System Overview
+User → React UI → FastAPI → AI Models → MongoDB → Response
+4️⃣ Functional Requirements (BUILDABLE)
+🔹 Feature 1: Fake News Detection
+Input:
+Text (article/news)
+Output:
+Label: Real / Fake
+Confidence score
+🔹 Feature 2: Deepfake Detection
+Input:
+Video file (.mp4)
+Output:
+Label: Real / Deepfake
+Confidence %
+🔹 Feature 3: Dashboard
+Show result
+Show confidence
+Show explanation (basic)
+5️⃣ Non-Functional Requirements
+Requirement	Target
+Response Time	< 3 sec
+Accuracy	> 85%
+Scalability	API-based
+Security	JWT auth (optional MVP skip)
+6️⃣ Tech Stack (Finalized)
+Backend
+FastAPI (Python)
+ML
+HuggingFace Transformers (BERT)
+OpenCV
+Pretrained Deepfake Model
+Frontend
+React (or even simple HTML if short on time)
+Database
+MongoDB (optional in MVP)
+7️⃣ Folder Structure (VERY IMPORTANT)
+project/
+│
+├── backend/
+│   ├── main.py
+│   ├── models/
+│   │   ├── fake_news_model.py
+│   │   ├── deepfake_model.py
+│   ├── utils/
+│   │   ├── preprocess.py
+│
+├── frontend/
+│   ├── src/
+│   │   ├── App.js
+│
+├── data/
+├── notebooks/
+├── requirements.txt
+├── README.md
+8️⃣ Development Phases (STEP-BY-STEP BUILD PLAN)
+🚀 Phase 1: Fake News Model (DAY 1–2)
+Step 1: Install Libraries
+pip install transformers datasets torch scikit-learn
+Step 2: Load Dataset
+
+Use:
+
+FakeNewsNet
+Or simple CSV dataset
+Step 3: Train BERT Model
+
+Use HuggingFace:
+
+from transformers import BertTokenizer, BertForSequenceClassification
+Step 4: Save Model
+model.save_pretrained("fake_news_model")
+🚀 Phase 2: Deepfake Detection (DAY 3–4)
+Step 1: Install
+pip install opencv-python torch torchvision
+Step 2: Extract Frames
+import cv2
+
+def extract_frames(video_path):
+    cap = cv2.VideoCapture(video_path)
+    frames = []
+    while True:
+        ret, frame = cap.read()
+        if not ret:
+            break
+        frames.append(frame)
+    return frames
+Step 3: Use Pretrained Model
+
+👉 IMPORTANT: Don’t train from scratch
+
+Use:
+
+XceptionNet pretrained
+Or simple CNN classifier
+Step 4: Aggregate Results
+prediction = sum(frame_preds) / len(frame_preds)
+🚀 Phase 3: FastAPI Backend (DAY 5–6)
+Install:
+pip install fastapi uvicorn
+Create API
+from fastapi import FastAPI, UploadFile
+
+app = FastAPI()
+
+@app.post("/predict/text")
+def predict_text(text: str):
+    return {"result": "Fake", "confidence": 0.91}
+
+@app.post("/predict/video")
+def predict_video(file: UploadFile):
+    return {"result": "Deepfake", "confidence": 0.88}
+
+Run:
+
+uvicorn main:app --reload
+🚀 Phase 4: Frontend (DAY 7–8)
+Features:
+Text input box
+File upload
+Result display
+Example API Call
+fetch("/predict/text", {
+  method: "POST",
+  body: JSON.stringify({ text })
+});
+🚀 Phase 5: Integration (DAY 9)
+Connect frontend → backend
+Test full pipeline
+9️⃣ API Design
+Text API
+POST /predict/text
+Input: { "text": "news article" }
+Output: { "label": "Fake", "confidence": 0.92 }
+Video API
+POST /predict/video
+Input: video file
+Output: { "label": "Deepfake", "confidence": 0.87 }
+🔟 Testing Strategy
+Unit Testing
+Model predictions
+API endpoints
+Integration Testing
+End-to-end flow
+Metrics
+Accuracy
+F1-score
+Confusion matrix
+1️⃣1️⃣ Deployment Plan
+Local
+uvicorn main:app
+Docker
+Containerize backend
+Cloud (Optional)
+AWS / Render / Railway
+1️⃣2️⃣ Risks & Mitigation
+Risk	Solution
+No GPU	Use pretrained models
+Slow video processing	Limit frames
+Dataset issues	Use small datasets
+Time shortage	Focus on NLP first
+1️⃣3️⃣ Timeline (REALISTIC)
+Day	Task
+1–2	Fake news model
+3–4	Deepfake pipeline
+5–6	Backend
+7–8	Frontend
+9	Integration
+10	Testing + polish
+🏆 Final Advice (Very Important)
+
+If time gets tight:
+
+👉 PRIORITY ORDER
+
+Fake News Detection ✅ (must build)
+FastAPI backend ✅
+Basic UI ✅
+Deepfake (simplified) ⚠ optional
