@@ -1,4 +1,4 @@
-# 🚀 Multi-Modal Detection System  
+# 🚀 TrueLens AI
 ### AI-Powered Fake News & Deepfake Detection
 
 > A production-ready multimodal AI system that detects misinformation by jointly analyzing **text, images, and video** using Deep Learning.
@@ -62,8 +62,8 @@ Multi-Modal-Detection/
 ## ⚙️ Installation
 
 ```bash
-git clone https://github.com/MiteshPanda/Multi-Modal-Detection.git
-cd Multi-Modal-Detection
+git clone https://github.com/MiteshPanda/TrueLensAI.git
+cd TrueLensAI
 pip install -r requirements.txt
 ```
 
