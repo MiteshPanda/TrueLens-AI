@@ -62,8 +62,8 @@ Multi-Modal-Detection/
 ## ⚙️ Installation
 
 ```bash
-git clone https://github.com/MiteshPanda/TrueLensAI.git
-cd TrueLensAI
+git clone https://github.com/MiteshPanda/TrueLens-AI.git
+cd TrueLens-AI
 pip install -r requirements.txt
 ```
 
