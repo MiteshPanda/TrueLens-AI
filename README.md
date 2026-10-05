@@ -31,6 +31,9 @@ It combines **NLP + Computer Vision** to detect fake news and deepfakes with hig
 
 ```
 User Input → Models (Text/Image/Video) → Fusion Layer → Classification
+
+<img width="4447" height="7536" alt="diagram" src="https://github.com/user-attachments/assets/13fcf086-c942-43ed-bdad-ce5960663607" />
+
 ```
 
 ---
